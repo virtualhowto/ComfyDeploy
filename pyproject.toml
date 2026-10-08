@@ -4,8 +4,18 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "comfydeploy"
-version = "0.1.0"
+version = "0.2.0"
+description = "Local-first ComfyUI Studio deployment control plane"
+readme = "README.md"
 requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = []
 
 [project.scripts]
 comfydeploy = "comfydeploy.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["comfydeploy*"]
+
+[tool.setuptools.package-data]
+comfydeploy = ["ui/*.html", "ui/*.css", "ui/*.js", "manifests/*.json"]

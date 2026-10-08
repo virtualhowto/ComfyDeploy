@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#080d15" />
+  <meta name="description" content="ComfyDeploy — your command centre for a self-hosted creative AI stack." />
+  <title>ComfyDeploy — AI infrastructure, beautifully orchestrated</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230d1923'/%3E%3Cpath d='M14 32 31 14l19 18-19 18Z' fill='none' stroke='%2367eed4' stroke-width='5'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%2367eed4'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="/styles.css" />
+  <script src="/app.js" defer></script>
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar">
+    <button class="brand" data-page="overview" aria-label="ComfyDeploy home">
+      <span class="brand-icon"><svg viewBox="0 0 40 40" fill="none"><path d="M7 20 20 6l13 14-13 14Z" stroke="currentColor" stroke-width="2.6"/><circle cx="20" cy="20" r="5" fill="currentColor"/></svg></span>
+      <span class="brand-label">COMFY<span>DEPLOY</span><small>CONTROL PLANE</small></span>
+      <span class="brand-version">BETA</span>
+    </button>
+    <div class="side-group-label">WORKSPACE</div>
+    <nav class="nav" aria-label="Primary navigation">
+      <button class="nav-item active" data-page="overview"><span class="nav-icon" data-icon="dashboard"></span>Overview<span class="nav-indicator"></span></button>
+      <button class="nav-item" data-page="components"><span class="nav-icon" data-icon="grid"></span>Component library<span class="pill-count" id="sidebar-pack-count">0</span></button>
+      <button class="nav-item" data-page="installer"><span class="nav-icon" data-icon="rocket"></span>Deployment wizard</button>
+      <button class="nav-item" data-page="activity"><span class="nav-icon" data-icon="activity"></span>Activity & logs</button>
+    </nav>
+    <div class="side-group-label second">INFRASTRUCTURE</div>
+    <div class="sidebar-status" id="sidebar-status"><span class="live-dot muted"></span>Environment not scanned</div>
+    <div class="sidebar-bottom">
+      <div class="support-card"><span class="card-spark">✦</span><strong>Everything, in sync.</strong><p>One calm command centre for your creative AI infrastructure.</p><button data-page="installer">Launch installer <span>↗</span></button></div>
+      <div class="version-line"><span>ComfyDeploy</span><span>v0.2.0 • Open source</span></div>
+    </div>
+  </aside>
+  <main class="main">
+    <header class="topbar">
+      <div class="crumbs"><span>Workspace</span><span class="slash">/</span><strong id="breadcrumb">Overview</strong></div>
+      <div class="top-actions"><div class="environment-tag"><span class="live-dot" id="top-dot"></span><span id="env-label">Awaiting scan</span></div><button class="round-button" id="refresh-button" aria-label="Rescan environment" title="Rescan environment"><span data-icon="refresh"></span></button><div class="avatar" title="Local operator">CD</div></div>
+    </header>
+    <div id="toast-region" role="status" aria-live="polite"></div>
+    <section id="view" class="page" aria-live="polite"></section>
+    <footer class="footer"><span>CRAFTED FOR CREATORS & BUILDERS</span><span>LOCAL FIRST <span class="footer-light">●</span> YOUR MODELS. YOUR MACHINE. YOUR RULES.</span></footer>
+  </main>
+</div>
+<div class="modal-backdrop hidden" id="confirm-modal"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><div class="modal-symbol">!</div><h2 id="modal-title">Approve deployment</h2><p>This will write configuration and may download third-party software or very large AI model files. Review the plan, sources, licences and network access before continuing.</p><label class="check-row"><input type="checkbox" id="confirm-agree"/><span>I approve writing to the deployment directory and downloading selected components.</span></label><label class="check-row"><input type="checkbox" id="confirm-unverified"/><span>Allow model downloads without a recorded SHA-256 checksum.</span></label><label class="check-row"><input type="checkbox" id="confirm-start" checked/><span>Start or rebuild the Docker stack when installation completes.</span></label><div class="modal-buttons"><button class="btn btn-subtle" id="cancel-install">Cancel</button><button class="btn btn-primary" id="approve-install" disabled>Deploy selected stack <span>→</span></button></div></div></div>
+</body>
+</html>
