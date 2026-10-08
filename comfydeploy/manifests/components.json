@@ -3,32 +3,256 @@
   "catalog_version": "0.2.0",
   "source": "https://github.com/tiernan1979/comfyuistudio#models",
   "packs": [
-    {"id":"base", "name":"Studio Core", "subtitle":"Visual workflow hub", "category":"Core", "icon":"layers", "components":["studio"], "default":true},
-    {"id":"image", "name":"Image Forge", "subtitle":"Qwen-Image FP8", "category":"Creation", "icon":"image", "components":["qwen-image","qwen-text","qwen-vae"], "vram":"12 GB+ suggested"},
-    {"id":"edit", "name":"Image Remix", "subtitle":"AI image editing", "category":"Creation", "icon":"wand", "components":["qwen-image-edit","qwen-text","qwen-vae"]},
-    {"id":"video", "name":"Motion Studio", "subtitle":"Wan 2.1 text-to-video", "category":"Creation", "icon":"film", "components":["wan-1b","wan-text","wan-vae"]},
-    {"id":"music", "name":"Sound Lab", "subtitle":"MiniMax Music 3", "category":"Creation", "icon":"music", "components":["music-dit","music-text","music-vae"]},
-    {"id":"3d", "name":"Shape Engine", "subtitle":"Pixal3D + 3D tools", "category":"Advanced", "icon":"box", "components":["pixal3d","pixal-vision","pixal-vae","hunyuan-paint","uni-rig"], "vram":"High VRAM / experimental"},
-    {"id":"upscale", "name":"Pixel Polish", "subtitle":"4× enhancement", "category":"Advanced", "icon":"sparkles", "components":["upscale-ultrasharp"]}
+    {
+      "id": "base",
+      "name": "Studio Core",
+      "subtitle": "Visual workflow hub",
+      "category": "Core",
+      "icon": "layers",
+      "components": [
+        "studio"
+      ],
+      "default": true
+    },
+    {
+      "id": "image",
+      "name": "Image Forge",
+      "subtitle": "Qwen-Image FP8",
+      "category": "Creation",
+      "icon": "image",
+      "components": [
+        "qwen-image",
+        "qwen-text",
+        "qwen-vae"
+      ],
+      "vram": "12 GB+ suggested"
+    },
+    {
+      "id": "edit",
+      "name": "Image Remix",
+      "subtitle": "AI image editing",
+      "category": "Creation",
+      "icon": "wand",
+      "components": [
+        "qwen-image-edit",
+        "qwen-text",
+        "qwen-vae"
+      ]
+    },
+    {
+      "id": "video",
+      "name": "Motion Studio",
+      "subtitle": "Wan 2.1 text-to-video",
+      "category": "Creation",
+      "icon": "film",
+      "components": [
+        "wan-1b",
+        "wan-text",
+        "wan-vae"
+      ]
+    },
+    {
+      "id": "music",
+      "name": "Sound Lab",
+      "subtitle": "MiniMax Music 3",
+      "category": "Creation",
+      "icon": "music",
+      "components": [
+        "music-dit",
+        "music-text",
+        "music-vae"
+      ]
+    },
+    {
+      "id": "3d",
+      "name": "Shape Engine",
+      "subtitle": "Pixal3D + 3D tools",
+      "category": "Advanced",
+      "icon": "box",
+      "components": [
+        "pixal3d",
+        "pixal-vision",
+        "pixal-vae",
+        "hunyuan-paint",
+        "uni-rig"
+      ],
+      "vram": "High VRAM / experimental"
+    },
+    {
+      "id": "upscale",
+      "name": "Pixel Polish",
+      "subtitle": "4\u00d7 enhancement",
+      "category": "Advanced",
+      "icon": "sparkles",
+      "components": [
+        "upscale-ultrasharp"
+      ]
+    }
   ],
   "components": {
-    "studio": {"name":"ComfyUI Studio", "type":"service", "image":"ghcr.io/tiernan1979/comfyuistudio:latest", "license":"MIT"},
-    "comfyui": {"name":"ComfyUI engine", "type":"service", "image":"local Dockerfile", "license":"GPL-3.0"},
-    "qwen-image": {"name":"Qwen-Image FP8", "type":"model", "requires":["studio","comfyui"], "url":"https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/diffusion_models/qwen_image_fp8_e4m3fn.safetensors", "destination":"diffusion_models/qwen_image_fp8_e4m3fn.safetensors", "license":"Check model card"},
-    "qwen-text": {"name":"Qwen image text encoder", "type":"model", "url":"https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors", "destination":"text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors", "license":"Check model card"},
-    "qwen-vae": {"name":"Qwen image VAE", "type":"model", "url":"https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/vae/qwen_image_vae.safetensors", "destination":"vae/qwen_image_vae.safetensors", "license":"Check model card"},
-    "qwen-image-edit": {"name":"Qwen Image Edit FP8", "type":"model", "requires":["studio","comfyui"], "url":"https://huggingface.co/Comfy-Org/Qwen-Image-Edit_ComfyUI/resolve/main/split_files/diffusion_models/qwen_image_edit_fp8_e4m3fn.safetensors", "destination":"diffusion_models/qwen_image_edit_fp8_e4m3fn.safetensors", "license":"Check model card"},
-    "wan-1b": {"name":"Wan 2.1 1.3B video", "type":"model", "requires":["studio","comfyui"], "url":"https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/diffusion_models/wan2.1_t2v_1.3B_bf16.safetensors", "destination":"diffusion_models/wan2.1_t2v_1.3B_bf16.safetensors", "license":"Check model card"},
-    "wan-text": {"name":"Wan UMT5 encoder", "type":"model", "url":"https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors", "destination":"text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors", "license":"Check model card"},
-    "wan-vae": {"name":"Wan video VAE", "type":"model", "url":"https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/vae/wan_2.1_vae.safetensors", "destination":"vae/wan_2.1_vae.safetensors", "license":"Check model card"},
-    "music-dit": {"name":"MiniMax Music DiT", "type":"model", "requires":["studio","comfyui"], "url":"https://huggingface.co/Comfy-Org/MiniMax-Music-3/resolve/main/diffusion_models/minimax_music3_dit_int8_convrot.safetensors", "destination":"diffusion_models/minimax_music3_dit_int8_convrot.safetensors", "license":"MiniMax community license"},
-    "music-text": {"name":"MiniMax Music encoder", "type":"model", "url":"https://huggingface.co/Comfy-Org/MiniMax-Music-3/resolve/main/text_encoders/minimax_music3_text_encoder_pruned_int8_convrot.safetensors", "destination":"text_encoders/minimax_music3_text_encoder_pruned_int8_convrot.safetensors", "license":"MiniMax community license"},
-    "music-vae": {"name":"MiniMax Music VAE", "type":"model", "url":"https://huggingface.co/Comfy-Org/MiniMax-Music-3/resolve/main/vae/minimax_music3_dav.safetensors", "destination":"vae/minimax_music3_dav.safetensors", "license":"MiniMax community license"},
-    "pixal3d": {"name":"Pixal3D engine", "type":"model", "requires":["studio","comfyui"], "url":"https://huggingface.co/Comfy-Org/Pixal3D/resolve/main/diffusion_models/pixal3d_int8_convrot.safetensors", "destination":"diffusion_models/pixal3d_int8_convrot.safetensors", "license":"Check model card"},
-    "pixal-vision": {"name":"Pixal3D vision encoder", "type":"model", "url":"https://huggingface.co/Comfy-Org/Pixal3D/resolve/main/clip_vision/dino_v3_L_naf_fp32.safetensors", "destination":"clip_vision/dino_v3_L_naf_fp32.safetensors", "license":"Check model card"},
-    "pixal-vae": {"name":"Pixal3D shape VAE", "type":"model", "url":"https://huggingface.co/Comfy-Org/TRELLIS.2/resolve/main/vae/trellis_2_shape_vae_bf16.safetensors", "destination":"vae/trellis_2_shape_vae_bf16.safetensors", "license":"Check model card"},
-    "hunyuan-paint": {"name":"Hunyuan 3D paint nodes", "type":"custom_node", "requires":["comfyui"], "url":"https://github.com/agenticvibes/ComfyUI-Hunyuan3D-Paint.git", "directory":"ComfyUI-Hunyuan3D-Paint", "license":"Check upstream"},
-    "uni-rig": {"name":"UniRig animation nodes", "type":"custom_node", "requires":["comfyui"], "url":"https://github.com/PozzettiAndrea/ComfyUI-UniRig.git", "directory":"ComfyUI-UniRig", "license":"Check upstream"},
-    "upscale-ultrasharp": {"name":"4× UltraSharp", "type":"model", "requires":["studio","comfyui"], "url":"https://huggingface.co/Kim2091/UltraSharp/resolve/main/4x-UltraSharp.pth", "destination":"upscale_models/4x-UltraSharp.pth", "license":"Check model card"}
+    "studio": {
+      "name": "ComfyUI Studio",
+      "type": "service",
+      "image": "ghcr.io/tiernan1979/comfyuistudio:latest",
+      "license": "MIT"
+    },
+    "comfyui": {
+      "name": "ComfyUI engine",
+      "type": "service",
+      "image": "local Dockerfile",
+      "license": "GPL-3.0"
+    },
+    "qwen-image": {
+      "name": "Qwen-Image FP8",
+      "type": "model",
+      "requires": [
+        "studio",
+        "comfyui",
+        "qwen-text",
+        "qwen-vae"
+      ],
+      "url": "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/diffusion_models/qwen_image_fp8_e4m3fn.safetensors",
+      "destination": "diffusion_models/qwen_image_fp8_e4m3fn.safetensors",
+      "license": "Check model card"
+    },
+    "qwen-text": {
+      "name": "Qwen image text encoder",
+      "type": "model",
+      "url": "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors",
+      "destination": "text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors",
+      "license": "Check model card"
+    },
+    "qwen-vae": {
+      "name": "Qwen image VAE",
+      "type": "model",
+      "url": "https://huggingface.co/Comfy-Org/Qwen-Image_ComfyUI/resolve/main/split_files/vae/qwen_image_vae.safetensors",
+      "destination": "vae/qwen_image_vae.safetensors",
+      "license": "Check model card"
+    },
+    "qwen-image-edit": {
+      "name": "Qwen Image Edit FP8",
+      "type": "model",
+      "requires": [
+        "studio",
+        "comfyui",
+        "qwen-text",
+        "qwen-vae"
+      ],
+      "url": "https://huggingface.co/Comfy-Org/Qwen-Image-Edit_ComfyUI/resolve/main/split_files/diffusion_models/qwen_image_edit_fp8_e4m3fn.safetensors",
+      "destination": "diffusion_models/qwen_image_edit_fp8_e4m3fn.safetensors",
+      "license": "Check model card"
+    },
+    "wan-1b": {
+      "name": "Wan 2.1 1.3B video",
+      "type": "model",
+      "requires": [
+        "studio",
+        "comfyui",
+        "wan-text",
+        "wan-vae"
+      ],
+      "url": "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/diffusion_models/wan2.1_t2v_1.3B_bf16.safetensors",
+      "destination": "diffusion_models/wan2.1_t2v_1.3B_bf16.safetensors",
+      "license": "Check model card"
+    },
+    "wan-text": {
+      "name": "Wan UMT5 encoder",
+      "type": "model",
+      "url": "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+      "destination": "text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+      "license": "Check model card"
+    },
+    "wan-vae": {
+      "name": "Wan video VAE",
+      "type": "model",
+      "url": "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/vae/wan_2.1_vae.safetensors",
+      "destination": "vae/wan_2.1_vae.safetensors",
+      "license": "Check model card"
+    },
+    "music-dit": {
+      "name": "MiniMax Music DiT",
+      "type": "model",
+      "requires": [
+        "studio",
+        "comfyui",
+        "music-text",
+        "music-vae"
+      ],
+      "url": "https://huggingface.co/Comfy-Org/MiniMax-Music-3/resolve/main/diffusion_models/minimax_music3_dit_int8_convrot.safetensors",
+      "destination": "diffusion_models/minimax_music3_dit_int8_convrot.safetensors",
+      "license": "MiniMax community license"
+    },
+    "music-text": {
+      "name": "MiniMax Music encoder",
+      "type": "model",
+      "url": "https://huggingface.co/Comfy-Org/MiniMax-Music-3/resolve/main/text_encoders/minimax_music3_text_encoder_pruned_int8_convrot.safetensors",
+      "destination": "text_encoders/minimax_music3_text_encoder_pruned_int8_convrot.safetensors",
+      "license": "MiniMax community license"
+    },
+    "music-vae": {
+      "name": "MiniMax Music VAE",
+      "type": "model",
+      "url": "https://huggingface.co/Comfy-Org/MiniMax-Music-3/resolve/main/vae/minimax_music3_dav.safetensors",
+      "destination": "vae/minimax_music3_dav.safetensors",
+      "license": "MiniMax community license"
+    },
+    "pixal3d": {
+      "name": "Pixal3D engine",
+      "type": "model",
+      "requires": [
+        "studio",
+        "comfyui",
+        "pixal-vision",
+        "pixal-vae"
+      ],
+      "url": "https://huggingface.co/Comfy-Org/Pixal3D/resolve/main/diffusion_models/pixal3d_int8_convrot.safetensors",
+      "destination": "diffusion_models/pixal3d_int8_convrot.safetensors",
+      "license": "Check model card"
+    },
+    "pixal-vision": {
+      "name": "Pixal3D vision encoder",
+      "type": "model",
+      "url": "https://huggingface.co/Comfy-Org/Pixal3D/resolve/main/clip_vision/dino_v3_L_naf_fp32.safetensors",
+      "destination": "clip_vision/dino_v3_L_naf_fp32.safetensors",
+      "license": "Check model card"
+    },
+    "pixal-vae": {
+      "name": "Pixal3D shape VAE",
+      "type": "model",
+      "url": "https://huggingface.co/Comfy-Org/TRELLIS.2/resolve/main/vae/trellis_2_shape_vae_bf16.safetensors",
+      "destination": "vae/trellis_2_shape_vae_bf16.safetensors",
+      "license": "Check model card"
+    },
+    "hunyuan-paint": {
+      "name": "Hunyuan 3D paint nodes",
+      "type": "custom_node",
+      "requires": [
+        "comfyui"
+      ],
+      "url": "https://github.com/agenticvibes/ComfyUI-Hunyuan3D-Paint.git",
+      "directory": "ComfyUI-Hunyuan3D-Paint",
+      "license": "Check upstream"
+    },
+    "uni-rig": {
+      "name": "UniRig animation nodes",
+      "type": "custom_node",
+      "requires": [
+        "comfyui"
+      ],
+      "url": "https://github.com/PozzettiAndrea/ComfyUI-UniRig.git",
+      "directory": "ComfyUI-UniRig",
+      "license": "Check upstream"
+    },
+    "upscale-ultrasharp": {
+      "name": "4\u00d7 UltraSharp",
+      "type": "model",
+      "requires": [
+        "studio",
+        "comfyui"
+      ],
+      "url": "https://huggingface.co/Kim2091/UltraSharp/resolve/main/4x-UltraSharp.pth",
+      "destination": "upscale_models/4x-UltraSharp.pth",
+      "license": "Check model card"
+    }
   }
 }
